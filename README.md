@@ -12,7 +12,7 @@ This script is designed to be run in a Unix/Linux environment with Bash installe
 Here's what each of the command-line arguments does:
 
 - `-f`: Use this option to ignore any expansion errors.
-- `TEMPLATE_FILE`: This is the path to the template file that you want to expand.
+- `TEMPLATE_FILE`: This is the path to the template file that you want to expand. To read from standard input, use `-`.
 - `VARIABLE1=VALUE1 VARIABLE2=VALUE2...`: These are the variable-value pairs that you want to use to expand the template. Each pair should be delimited by the `=` character.
 
 ## Example1: Basic Usage
