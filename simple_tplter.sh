@@ -71,7 +71,7 @@ function contains_delimiter() {
 function make_assignments() {
   for variable_and_value in "${VARIABLE_AND_VALUE_ARRAY[@]}"; do
     if [ $(contains_delimiter "$variable_and_value") -eq 0 ]; then
-      echo >&2 "$MY_NAME: Error: Input a set of variable-value pairs delimited by the \"${DELIMITER}\" character. Each variable must not contain newlines.
+      echo >&2 "$MY_NAME: Error: Input a set of variable-value pairs delimited by the \"${DELIMITER}\" character. Each variable name must not contain newlines.
   Invalid pair: $variable_and_value"
       usage
       return 1
