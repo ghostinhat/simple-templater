@@ -59,7 +59,7 @@ In this sub-example, we'll use the script with an incomplete set of variable ass
 
 ```shell
 $ cat sample_tpls/02_default_values.txt
-Hello, ${NAME:-World}! My favorite color is ${COLOR:-blue}.
+Hello, ${NAME-World}! My favorite color is ${COLOR-blue}.
 
 $ ./simple_tplter.sh sample_tpls/02_default_values.txt NAME=John
 Hello, John! My favorite color is blue.
