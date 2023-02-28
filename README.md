@@ -75,7 +75,7 @@ In this example, we'll use double quotes or single quotes to pass in variable va
 $ cat sample_tpls/03_two_variables.txt
 Hello, ${NAME}! My favorite color is ${COLOR}.
 
-$ ./simple_tplter.sh sample_tpls/03_two_variables.txt 'NAME=John Doe' "COLOR='red
+$ ./simple_tplter.sh sample_tpls/03_two_variables.txt NAME='John Doe' COLOR="'red
 and blue'"
 Hello, John Doe! My favorite color is 'red
 and blue'.
@@ -116,7 +116,7 @@ $ cat sample_tpls/05_contents.txt
 This is the contents of the file.
 It spans multiple lines.
 
-$ ./simple_tplter.sh sample_tpls/05_template.txt "FILE_CONTENTS=$(cat sample_tpls/05_contents.txt)"
+$ ./simple_tplter.sh sample_tpls/05_template.txt FILE_CONTENTS="$(cat sample_tpls/05_contents.txt)"
 Contents of the file:
 This is the contents of the file.
 It spans multiple lines.

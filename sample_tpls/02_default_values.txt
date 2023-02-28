@@ -1,1 +1,1 @@
-Hello, ${NAME:-World}! My favorite color is ${COLOR:-blue}.
+Hello, ${NAME-World}! My favorite color is ${COLOR-blue}.
