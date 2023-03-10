@@ -68,16 +68,32 @@ function contains_delimiter() {
   fi
 }
 
+function is_valid_variable_name {
+  local str="$1"
+  if [[ "$str" =~ ^[a-zA-Z_]+[a-zA-Z0-9_]*$ ]]; then
+      echo 1
+  else
+      echo 0
+  fi
+}
+
 function make_assignments() {
   for variable_and_value in "${VARIABLE_AND_VALUE_ARRAY[@]}"; do
     if [ $(contains_delimiter "$variable_and_value") -eq 0 ]; then
-      echo >&2 "$MY_NAME: Error: Input a set of variable-value pairs delimited by the \"${DELIMITER}\" character. Each variable name must not contain newlines.
+      echo >&2 "$MY_NAME: Error: Input a set of variable-value pairs delimited by the \"${DELIMITER}\" character.
   Invalid pair: $variable_and_value"
       usage
       return 1
     fi
     
     local variable="$(head -1 <<<"$variable_and_value" | cut -f 1 -d "$DELIMITER")"
+    if [ $(is_valid_variable_name "$variable") -eq 0 ]; then
+      echo >&2 "$MY_NAME: Error: Variable names must follow the same naming convention as bash variables, which means they can only contain letters, numbers, and underscores, and cannot start with a number.
+  Invalid pair: $variable_and_value"
+      usage
+      return 1
+    fi
+    
     local value="$(sed "1 s/^[^$DELIMITER]*$DELIMITER//" <<<"$variable_and_value")"
     
     echo -n "$VARIABLE_NAME_PREFIX$variable$DELIMITER\"$(escape_value "$value")\" "
