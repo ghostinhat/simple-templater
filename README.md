@@ -44,7 +44,7 @@ $ cat sample_tpls/02_no_default_values.txt
 Hello, ${NAME}! My favorite color is ${COLOR}.
 
 $ ./simple_tplter.sh sample_tpls/02_no_default_values.txt NAME=John
-./simple_tplter.sh: line XXX: _TPLTER_COLOR: unbound variable
+/usr/bin/bash: line XX: _TPLTER_COLOR: unbound variable
 simple_tplter.sh: Error: A variable expansion error has occurred. Please check the variables in your template to ensure that your input variable assignments are valid and sufficient.
   Template: sample_tpls/02_no_default_values.txt, Assignments: "NAME=John"
 simple_tplter.sh: Usage: ./simple_tplter.sh [-f] TEMPLATE_FILE VARIABLE1=VALUE1 VARIABLE2=VALUE2...

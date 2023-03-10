@@ -96,25 +96,22 @@ function make_assignments() {
     
     local value="$(sed "1 s/^[^$DELIMITER]*$DELIMITER//" <<<"$variable_and_value")"
     
-    echo -n "$VARIABLE_NAME_PREFIX$variable$DELIMITER\"$(escape_value "$value")\" "
+    echo -n "$VARIABLE_NAME_PREFIX$variable=\"$(escape_value "$value")\";"
   done
 }
 
-# should be executed by sub shell.
 function assign() {
   local template_str="$1"
   local assignments="$2"
   
+  local uoption
   if [ $IS_FORCED -eq 1 ]; then
-    set +u
+    uoption="+u"
   else
-    set -u
+    uoption="-u"
   fi
   
-  if [ "$assignments" != "" ]; then
-    eval "declare $assignments"
-  fi
-  eval "echo \"$template_str\""
+  echo "$assignments echo \"$template_str\"" | PATH="" "$(which bash)" -r "$uoption"
 }
 
 
