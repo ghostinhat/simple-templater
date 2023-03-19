@@ -1,5 +1,5 @@
 #!/bin/bash
-# simple_templater.sh
+# simple_tplter.sh
 # v1.0.4
 # Copyright (c) 2023 ghostinhat
 #
